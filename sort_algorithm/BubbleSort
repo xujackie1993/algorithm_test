@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+'''经典排序算法-冒泡'''
+
+def BubbleSort(arry):
+    '''冒泡'''
+    n = len(arry)
+    for i in range(n):
+        for j in range(1, n-i):
+            if arry[j-1] > arry[j]:
+                arry[j-1],arry[j] = arry[j], arry[j-1]
+
+    return arry
+
+print(BubbleSort([1,5,3,6,2]))
+
+
+#优化1：某一趟遍历如果没有数据交换，则说明已经排好序了，因此不用再进行迭代了。
+#用一个标记记录这个状态即可。
+def BubbleSort2(arry):
+    n = len(arry)
+    for i in range(n):
+        flag = 1
+        for j in range(1, n-i):
+            if arry[j-1] > arry[j]:
+                arry[j-1], arry[j] = arry[j], arry[j-1]
+                flag = 0
+        if flag:
+            break
+    return arry
+
+print(BubbleSort2([10,5,3,6,2]))
+
+#优化2：记录某次遍历时最后发生数据交换的位置，这个位置之后的数据显然已经有序了。
+# 因此通过记录最后发生数据交换的位置就可以确定下次循环的范围了。
+def BubbleSort3(arry):
+    n = len(arry)
+    k = n  #k为循环的范围，初始值n
+    for i in range(n):
+        flag = 1
+        for j in range(1,k):
+            if arry[j-1] > arry[j]:
+                arry[j-1], arry[j] = arry[j], arry[j-1]
+                k = j
+                flag = 0
+        if flag:
+            break
+    return arry
+
+print(BubbleSort3([4,6,1,3,9]))
+
+
+        

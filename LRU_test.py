@@ -4,6 +4,7 @@
 实现lru算法（最近最少使用算法）
 '''
 import collections
+from functools import lru_cache
 
 class LRUCache(object):
     '''
