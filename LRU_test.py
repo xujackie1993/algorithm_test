@@ -6,6 +6,7 @@
 import collections
 from functools import lru_cache
 
+
 class LRUCache(object):
     '''
     function: 利用collections.OrderedDict 数据类型实现 最近最少使用算法
